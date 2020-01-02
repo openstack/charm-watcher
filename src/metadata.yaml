@@ -1,4 +1,5 @@
 name: watcher
+display-name: Watcher
 summary: OpenStack Watcher service
 maintainer: Stamatis Katsaounis <skatsaounis@admin.grnet.gr>
 description: |

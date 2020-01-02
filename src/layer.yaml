@@ -6,12 +6,12 @@ includes:
   - interface:keystone
   - interface:hacluster
   - interface:openstack-ha
+repo: https://github.com/grnet/charm-watcher
 options:
   basic:
     use_venv: True
     include_system_packages: False
     packages: [ 'libffi-dev', 'libssl-dev' ]
-    repo: https://github.com/grnet/charm-watcher
 config:
   deletes:
     - verbose
