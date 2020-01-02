@@ -1,0 +1,139 @@
+options:
+  collector-plugins:
+    default: "compute"
+    type: string
+    description: |
+      A comma separated list of cluster data model plugin names.
+      .
+      Available collector-plugins are: compute and storage.
+  grafana-auth-token:
+    default: "changeme"
+    type: string
+    description: |
+      The authtoken for access to Grafana datasource.
+  grafana-base-url:
+    default:
+    type: string
+    description: |
+      The base url parameter will need to specify the type of http protocol
+      and the use of plain text http is strongly discouraged due to the
+      transmission of the access token.
+      .
+      Additionally the path to the proxy interface needs to be supplied as
+      well in case Grafana is placed in a sub directory of the web server.
+      .
+      An example would be: https://mygrafana.org/api/datasource/proxy/
+  grafana-project-id-map:
+    default:
+    type: string
+    description: |
+      Mapping of datasource metrics to Grafana project ids.
+      .
+      Example:
+      host_airflow:1,host_cpu_usage:2,host_inlet_temp:3,host_outlet_temp:4,
+      host_power:5,host_ram_usage:6,instance_cpu_usage:7,
+      instance_l3_cache_usage:8,instance_ram_allocated:9,instance_ram_usage:10,
+      instance_root_disk_size:11
+  grafana-database-map:
+    default:
+    type: string
+    description: |
+      Mapping of datasource metrics to Grafana databases.
+      .
+      Example:
+      host_airflow:1,host_cpu_usage:2,host_inlet_temp:3,host_outlet_temp:4,
+      host_power:5,host_ram_usage:6,instance_cpu_usage:7,
+      instance_l3_cache_usage:8,instance_ram_allocated:9,instance_ram_usage:10,
+      instance_root_disk_size:11
+  grafana-attribute-map:
+    default:
+    type: string
+    description: |
+      Mapping of datasource metrics to resource attributes. For a complete list
+      of available attributes see
+      https://docs.openstack.org/watcher/latest/datasources/grafana.html#attribute
+      .
+      Example:
+      host_airflow:1,host_cpu_usage:2,host_inlet_temp:3,host_outlet_temp:4,
+      host_power:5,host_ram_usage:6,instance_cpu_usage:7,
+      instance_l3_cache_usage:8,instance_ram_allocated:9,instance_ram_usage:10,
+      instance_root_disk_size:11
+  grafana-translator-map:
+    default:
+    type: string
+    description: |
+      Mapping of datasource metrics to Grafana translators.
+      .
+      Example:
+      host_airflow:1,host_cpu_usage:2,host_inlet_temp:3,host_outlet_temp:4,
+      host_power:5,host_ram_usage:6,instance_cpu_usage:7,
+      instance_l3_cache_usage:8,instance_ram_allocated:9,instance_ram_usage:10,
+      instance_root_disk_size:11
+  grafana-query-map:
+    default:
+    type: string
+    description: |
+      Mapping of datasource metrics to Grafana queries. Values should be
+      strings for which the .format method will transform it.
+      The transformation offers five parameters to the query labeled {0} to
+      {4}. {0} will be replaced with the aggregate, {1} with the resource
+      attribute, {2} with the period, {3} with the granularity and {4} with
+      translator specifics for InfluxDB this will be the retention period.
+      These queries will need to be constructed using tools such as Postman.
+      Example: SELECT cpu FROM {4}.cpu_percent WHERE host == '{1}' AND
+      time > now()-{2}s
+      .
+      Example:
+      host_airflow:1,host_cpu_usage:2,host_inlet_temp:3,host_outlet_temp:4,
+      host_power:5,host_ram_usage:6,instance_cpu_usage:7,
+      instance_l3_cache_usage:8,instance_ram_allocated:9,instance_ram_usage:10,
+      instance_root_disk_size:11
+  grafana-retention-periods:
+    default:
+    type: string
+    description: |
+      Keys are the names of retention periods in InfluxDB and the values should
+      correspond with the maximum time they can retain in seconds.
+      .
+      Example: five_years:31556952,one_month:2592000,one_week:604800
+  data-model-period:
+    default: 3600
+    type: int
+    description: |
+      The time interval (in seconds) between each synchronization of the model
+  datasources:
+    default:
+    type: string
+    description: |
+      Datasources to use in order to query the needed metrics. If one of
+      strategy metric is not available in the first datasource, the next
+      datasource will be chosen.
+      .
+      Available datasources are: gnocchi, ceilometer and grafana.
+  action-plan-expiry:
+    default: 24
+    type: int
+    description: |
+      An expiry timespan (hours). Watcher invalidates any action plan for which
+      its creation time - whose number of hours has been offset by this
+      value - is older that the current time.
+  check-periodic-interval:
+    default: 1800
+    type: int
+    description: |
+      Interval (in seconds) for checking action plan expiry.
+  planner:
+    default: "weight"
+    type: string
+    description: |
+      The selected planner used to schedule the actions.
+      .
+      Available planners are: weight, workload_stabilization, basic and
+      storage_capacity_balance.
+  planner-config:
+    default:
+    type: string
+    description: |
+      User provided planner configuration. Supports a string representation of
+      a python dictionary where each top-level key represents a value in the
+      relevant planner section in watcher.conf template.

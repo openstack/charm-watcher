@@ -1,0 +1,21 @@
+name: watcher
+summary: OpenStack Watcher service
+maintainer: Stamatis Katsaounis <skatsaounis@admin.grnet.gr>
+description: |
+  OpenStack Watcher provides a flexible and scalable resource
+  optimization service for multi-tenant clouds.
+  .
+  OpenStack Train or later is required.
+tags:
+  - openstack
+series:
+  - bionic
+  - eoan
+subordinate: false
+requires:
+  shared-db:
+    interface: mysql-shared
+  amqp:
+    interface: rabbitmq
+  identity-service:
+    interface: keystone

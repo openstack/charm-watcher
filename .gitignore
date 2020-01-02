@@ -1,0 +1,9 @@
+.tox
+.stestr
+*__pycache__*
+*.pyc
+build
+.idea
+.venv
+cover
+.coverage
