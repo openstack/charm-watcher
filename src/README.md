@@ -7,17 +7,21 @@ charm takes care of all three, bundled as a single application.
 # Usage
 
 The OpenStack Watcher charm requires a running OpenStack deployment and relation
-with mysql database and keystone identity service.
+with mysql database, rabbitmq-server and keystone identity service.
 
 A simple deployment requires only four commands:
 
     juju deploy --series bionic --config openstack-origin=cloud:bionic-train watcher
     juju add-relation watcher mysql
+    juju add-relation watcher rabbitmq-server
     juju add-relation watcher keystone
 
 The charm also support High Availability by relating it to hacluster charm:
 
-    juju add-relation  nova-cloud-controller
+    juju deploy hacluster watcher-hacluster
+    juju add-unit watcher
+    juju set watcher vip=<VIP FOR ACCESS>
+    juju add-relation watcher-hacluster watcher
 
 # Bugs
 
