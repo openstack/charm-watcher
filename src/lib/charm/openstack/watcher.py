@@ -183,12 +183,12 @@ class WatcherCharm(openstack_charm.HAOpenStackCharm):
                     'storage_capacity_balance'.format(planner))
         planner_config = config_flags_parser(self.options.planner_config)
         planner_config_values = {
-            'weight': ['weights', 'parallelization'],
-            'workload_stabilization': ['weights'],
-            'basic': ['check_optimize_metadata'],
-            'storage_capacity_balance': ['ex_pools'],
+            'weight': {'weights', 'parallelization'},
+            'workload_stabilization': {'weights'},
+            'basic': {'check_optimize_metadata'},
+            'storage_capacity_balance': {'ex_pools'},
         }
-        if list(planner_config.keys()) != planner_config_values[planner]:
+        if planner_config.keys() != planner_config_values[planner]:
             return ('blocked',
                     'Provided planner {} must contain only the following '
                     'configuration attributes: {}'.format(
