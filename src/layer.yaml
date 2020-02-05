@@ -6,7 +6,7 @@ includes:
   - interface:keystone
   - interface:hacluster
   - interface:openstack-ha
-repo: https://github.com/grnet/charm-watcher
+repo: https://github.com/openstack/charm-watcher
 options:
   basic:
     use_venv: True

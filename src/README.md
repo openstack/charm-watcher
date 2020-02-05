@@ -4,6 +4,8 @@ This charm provides the Watcher service for an OpenStack Cloud. It is comprised
 of three different services. The API, the Decision Engine and the Applier. This
 charm takes care of all three, bundled as a single application.
 
+OpenStack Train or later is required.
+
 # Usage
 
 The OpenStack Watcher charm requires a running OpenStack deployment and relation
@@ -25,8 +27,8 @@ The charm also support High Availability by relating it to hacluster charm:
 
 # Bugs
 
-Please report bugs on [GitHub](https://github.com/grnet/charm-watcher/issues).
-For general questions please refer to the OpenStack [Charm Guide](https://docs.openstack.org/charm-guide/latest/).
+Please report bugs on [Launchpad]lp-bugs-charm-watcher].
+For general questions please refer to the OpenStack [Charm Guide][cg].
 
 # Configuration
 
@@ -42,6 +44,13 @@ know that, so include that information here:
 
 ## OpenStack Watcher
 
-- [Watcher](https://wiki.openstack.org/wiki/Watcher)
-- [Watcher Bugs](https://launchpad.net/watcher)
+- [Watcher][wiki-watcher]
+- [Watcher Bugs][lp-bugs-watcher]
 - Watcher IRC on freenode at #openstack-watcher
+
+<!-- LINKS -->
+
+[cg]: https://docs.openstack.org/charm-guide
+[lp-bugs-charm-watcher]: https://bugs.launchpad.net/charm-watcher/+filebug
+[lp-bugs-watcher]: https://launchpad.net/watcher
+[wiki-watcher]: https://wiki.openstack.org/wiki/Watcher

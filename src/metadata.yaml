@@ -1,7 +1,7 @@
 name: watcher
 display-name: Watcher
 summary: OpenStack Watcher service
-maintainer: Stamatis Katsaounis <skatsaounis@admin.grnet.gr>
+maintainer: OpenStack Charmers <openstack-charmers@lists.ubuntu.com>
 description: |
   OpenStack Watcher provides a flexible and scalable resource
   optimization service for multi-tenant clouds.
