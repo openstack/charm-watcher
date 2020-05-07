@@ -94,6 +94,8 @@ class WatcherCharm(openstack_charm.HAOpenStackCharm):
         'python-apt',  # NOTE: workaround for hacluster subordinate
     ]
 
+    python_version = 3
+
     api_ports = {
         'watcher-api': {
             os_ip.PUBLIC: 9322,

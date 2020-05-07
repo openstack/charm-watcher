@@ -1,8 +1,10 @@
 charm_name: watcher
 gate_bundles:
 - bionic-train
+- bionic-ussuri
+- focal-ussuri
 smoke_bundles:
-- bionic-train
+- focal-ussuri
 configure:
 - zaza.charm_tests.noop.setup.basic_setup
 tests:

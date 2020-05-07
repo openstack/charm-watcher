@@ -12,6 +12,7 @@ tags:
 series:
   - bionic
   - eoan
+  - focal
 subordinate: false
 requires:
   shared-db:
