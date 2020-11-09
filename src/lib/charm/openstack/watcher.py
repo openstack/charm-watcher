@@ -123,6 +123,7 @@ class WatcherCharm(openstack_charm.HAOpenStackCharm):
     package_codenames = {
         'watcher-common': collections.OrderedDict([
             ('3', 'train'),
+            ('4', 'ussuri'),
         ]),
     }
 
