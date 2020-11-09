@@ -124,6 +124,7 @@ class WatcherCharm(openstack_charm.HAOpenStackCharm):
         'watcher-common': collections.OrderedDict([
             ('3', 'train'),
             ('4', 'ussuri'),
+            ('5', 'victoria'),
         ]),
     }
 

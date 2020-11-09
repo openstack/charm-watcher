@@ -3,9 +3,15 @@ gate_bundles:
 - bionic-train
 - bionic-ussuri
 - focal-ussuri
+- focal-victoria
 smoke_bundles:
 - focal-ussuri
 configure:
 - zaza.charm_tests.noop.setup.basic_setup
 tests:
 - zaza.charm_tests.noop.tests.NoopTest
+dev_bundles:
+  - groovy-victoria
+tests_options:
+  force_deploy:
+    - groovy-victoria
