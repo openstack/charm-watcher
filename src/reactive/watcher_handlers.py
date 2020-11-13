@@ -33,6 +33,12 @@ charms_openstack.charm.use_defaults(
 )
 
 
+@reactive.when_not('is-update-status-hook')
+def auto_upgrade(*args):
+    with charms_openstack.charm.provide_charm_instance() as watcher_charm:
+        watcher_charm.upgrade_if_available(args)
+
+
 @reactive.when('shared-db.available')
 @reactive.when('identity-service.available')
 @reactive.when('amqp.available')

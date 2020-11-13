@@ -40,6 +40,7 @@ class TestRegisteredHooks(test_utils.TestRegisteredHooks):
                 'cluster_connected': ('ha.connected',),
             },
             'when_not': {
+                'auto_upgrade': ('is-update-status-hook',),
                 'init_db': ('db.synced',),
             }
         }
@@ -59,6 +60,12 @@ class TestWatcherHandlers(test_utils.PatchHelper):
         self.provide_charm_instance().__enter__.return_value = (
             self.watcher_charm)
         self.provide_charm_instance().__exit__.return_value = None
+
+    def test_auto_upgrade(self):
+        handlers.auto_upgrade('arg1', 'arg2')
+
+        self.watcher_charm.upgrade_if_available.assert_called_once_with(
+            ('arg1', 'arg2'))
 
     def test_render_config(self):
         self.patch_object(handlers.reactive, 'set_state')
