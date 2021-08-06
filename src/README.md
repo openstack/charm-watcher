@@ -22,7 +22,7 @@ The charm also support High Availability by relating it to hacluster charm:
 
     juju deploy hacluster watcher-hacluster
     juju add-unit watcher
-    juju set watcher vip=<VIP FOR ACCESS>
+    juju config watcher vip=<VIP FOR ACCESS>
     juju add-relation watcher-hacluster watcher
 
 # Bugs
