@@ -91,7 +91,7 @@ class WatcherCharm(openstack_charm.HAOpenStackCharm):
     packages = [
         'watcher-common', 'watcher-api', 'watcher-decision-engine',
         'watcher-applier', 'python3-watcher', 'libapache2-mod-wsgi-py3',
-        'python-apt',  # NOTE: workaround for hacluster subordinate
+        'python3-apt',  # NOTE: workaround for hacluster subordinate
     ]
 
     python_version = 3
