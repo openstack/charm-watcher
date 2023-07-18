@@ -1,0 +1,62 @@
+variables:
+  openstack-origin: &openstack-origin distro
+
+series: &series mantic
+
+applications:
+
+  keystone-mysql-router:
+    charm: ch:mysql-router
+    channel: latest/edge
+  watcher-mysql-router:
+    charm: ch:mysql-router
+    channel: latest/edge
+
+  mysql-innodb-cluster:
+    charm: ch:mysql-innodb-cluster
+    channel: latest/edge
+    num_units: 3
+    options:
+      source: distro
+
+  keystone:
+    charm: ch:keystone
+    channel: latest/edge
+    num_units: 1
+    options:
+      openstack-origin: *openstack-origin
+
+  rabbitmq-server:
+    charm: ch:rabbitmq-server
+    channel: latest/edge
+    num_units: 1
+    options:
+      source: distro
+
+  watcher:
+    charm: ../../../watcher.charm
+    num_units: 1
+    options:
+      openstack-origin: *openstack-origin
+      debug: True
+      datasources: gnocchi
+      planner: weight
+      planner-config: >
+        {
+            "weights": "change_node_power_state:9,change_nova_service_state:50,migrate:30,nop:70,resize:20,sleep:40,turn_host_to_acpi_s3_state:10,volume_migrate:60",
+            "parallelization": "change_node_power_state:2,change_nova_service_state:1,migrate:2,nop:1,resize:2,sleep:1,turn_host_to_acpi_s3_state:2,volume_migrate:2"
+        }
+
+relations:
+- - 'keystone:shared-db'
+  - 'keystone-mysql-router:shared-db'
+- - 'keystone-mysql-router:db-router'
+  - 'mysql-innodb-cluster:db-router'
+- - 'watcher:shared-db'
+  - 'watcher-mysql-router:shared-db'
+- - 'watcher-mysql-router:db-router'
+  - 'mysql-innodb-cluster:db-router'
+- - 'keystone:identity-service'
+  - 'watcher:identity-service'
+- - 'rabbitmq-server:amqp'
+  - 'watcher:amqp'
