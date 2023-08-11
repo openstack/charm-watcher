@@ -1,19 +1,42 @@
 charm_name: watcher
 gate_bundles:
-- jammy-antelope
-- jammy-bobcat
-- lunar-antelope
-- mantic-bobcat
+  - jammy-antelope
+  - jammy-bobcat
+  - lunar-antelope
+  - mantic-bobcat
 
 smoke_bundles:
-- jammy-antelope
-- jammy-bobcat
+  - jammy-antelope
+  - jammy-bobcat
 
 configure:
-- zaza.charm_tests.noop.setup.basic_setup
+  - zaza.openstack.charm_tests.vault.setup.auto_initialize_no_validation
+  - zaza.openstack.charm_tests.ceilometer.setup.basic_setup
+  - zaza.openstack.charm_tests.glance.setup.add_cirros_image
+  - zaza.openstack.charm_tests.keystone.setup.add_demo_user
+  - zaza.openstack.charm_tests.neutron.setup.basic_overcloud_network
+  - zaza.openstack.charm_tests.nova.setup.create_flavors
+  - zaza.openstack.charm_tests.nova.setup.manage_ssh_key
 
 tests:
-- zaza.charm_tests.noop.tests.NoopTest
+  - zaza.openstack.charm_tests.watcher.tests.WatcherTests
 
 tests_options:
   force_deploy: []
+
+target_deploy_status:
+  ovn-chassis:
+    workload-status: waiting
+    workload-status-message-prefix: "'certificates' awaiting server certificate data, 'ovsdb' incomplete"
+  ovn-central:
+    workload-status: waiting
+    workload-status-message-prefix: "'ovsdb-peer' incomplete, 'certificates' awaiting server certificate data"
+  neutron-api-plugin-ovn:
+    workload-status: waiting
+    workload-status-message-prefix: "'certificates' awaiting server certificate data, 'ovsdb-cms' incomplete"
+  vault:
+    workload-status: blocked
+    workload-status-message-prefix: Vault needs to be initialized
+  ceilometer:
+    workload-status: blocked
+    workload-status-message-prefix: "Run the ceilometer-upgrade action on the leader to initialize ceilometer and gnocchi"
