@@ -1,0 +1,12 @@
+applications:
+  watcher:
+    num_units: 3
+    options:
+      vip: '{{ TEST_VIP00 }}'
+  hacluster:
+    charm: ch:hacluster
+    num_units: 0
+    channel: latest/edge
+relations:
+- - watcher
+  - hacluster
