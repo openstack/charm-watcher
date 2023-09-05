@@ -49,6 +49,7 @@ def render_config(*args):
     reactive.set_state('config.rendered')
 
 
+@reactive.when_not('is-update-status-hook')
 @reactive.when_not('db.synced')
 @reactive.when('config.rendered')
 def init_db():
@@ -60,6 +61,7 @@ def init_db():
         watcher_charm.assess_status()
 
 
+@reactive.when_not('is-update-status-hook')
 @reactive.when('ha.connected')
 def cluster_connected(hacluster):
     """Configure HA resources in corosync"""

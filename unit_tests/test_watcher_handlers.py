@@ -41,7 +41,9 @@ class TestRegisteredHooks(test_utils.TestRegisteredHooks):
             },
             'when_not': {
                 'auto_upgrade': ('is-update-status-hook',),
-                'init_db': ('db.synced',),
+                'cluster_connected': ('is-update-status-hook',),
+                'init_db': ('db.synced',
+                            'is-update-status-hook'),
             }
         }
         # test that the hooks were registered via the
