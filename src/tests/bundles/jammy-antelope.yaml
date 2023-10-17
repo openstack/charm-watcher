@@ -7,42 +7,42 @@ applications:
 
   keystone-mysql-router:
     charm: ch:mysql-router
-    channel: latest/edge
+    channel: 8.0/edge
   nova-cloud-controller-mysql-router:
     charm: ch:mysql-router
-    channel: latest/edge
+    channel: 8.0/edge
   glance-mysql-router:
     charm: ch:mysql-router
-    channel: latest/edge
+    channel: 8.0/edge
   gnocchi-mysql-router:
     charm: ch:mysql-router
-    channel: latest/edge
+    channel: 8.0/edge
   neutron-api-mysql-router:
     charm: ch:mysql-router
-    channel: latest/edge
+    channel: 8.0/edge
   placement-mysql-router:
     charm: ch:mysql-router
-    channel: latest/edge
+    channel: 8.0/edge
   vault-mysql-router:
     charm: ch:mysql-router
-    channel: latest/edge
+    channel: 8.0/edge
   watcher-mysql-router:
     charm: ch:mysql-router
-    channel: latest/edge
+    channel: 8.0/edge
 
   mysql-innodb-cluster:
     charm: ch:mysql-innodb-cluster
-    channel: latest/edge
+    channel: 8.0/edge
     num_units: 3
 
   rabbitmq-server:
     charm: ch:rabbitmq-server
-    channel: latest/edge
+    channel: 3.9/edge
     num_units: 1
 
   keystone:
     charm: ch:keystone
-    channel: latest/edge
+    channel: 2023.2/edge
     num_units: 1
     options:
       openstack-origin: *openstack-origin
@@ -68,7 +68,7 @@ applications:
       openstack-origin: *openstack-origin
       network-manager: Neutron
       debug: true
-    channel: latest/edge
+    channel: 2023.2/edge
 
   neutron-api:
     charm: ch:neutron-api
@@ -78,21 +78,21 @@ applications:
       openstack-origin: *openstack-origin
       flat-network-providers: physnet1
       neutron-security-groups: true
-    channel: latest/edge
+    channel: 2023.2/edge
 
   glance:
     charm: ch:glance
     num_units: 1
     options:
       openstack-origin: *openstack-origin
-    channel: latest/edge
+    channel: 2023.2/edge
 
   placement:
     charm: ch:placement
     num_units: 1
     options:
       openstack-origin: *openstack-origin
-    channel: latest/edge
+    channel: 2023.2/edge
 
   nova-compute:
     charm: ch:nova-compute
@@ -106,31 +106,31 @@ applications:
       debug: true
       config-flags: "compute_monitors=cpu.virt_driver"
       libvirt-image-backend: "rbd"
-    channel: latest/edge
+    channel: 2023.2/edge
 
   vault:
     charm: ch:vault
     num_units: 1
-    channel: latest/edge
+    channel: 1.8/edge
 
   ovn-central:
     charm: ch:ovn-central
-    channel: latest/edge
+    channel: 23.09/edge
     num_units: 3
     options:
       source: *openstack-origin
 
   ovn-chassis:
     charm: ch:ovn-chassis
-    channel: latest/edge
+    channel: 23.09/edge
 
   neutron-api-plugin-ovn:
     charm: ch:neutron-api-plugin-ovn
-    channel: latest/edge
+    channel: 2023.2/edge
 
   ceilometer:
     charm: ch:ceilometer
-    channel: latest/edge
+    channel: 2023.2/edge
     num_units: 1
     options:
       openstack-origin: *openstack-origin
@@ -140,11 +140,11 @@ applications:
     num_units: 1
     options:
       openstack-origin: *openstack-origin
-    channel: latest/edge
+    channel: 2023.2/edge
 
   ceilometer-agent:
     charm: ch:ceilometer-agent
-    channel: latest/edge
+    channel: 2023.2/edge
 
   memcached:
     charm: ch:memcached
@@ -158,7 +158,7 @@ applications:
       osd-devices: '20G'
     options:
       source: *openstack-origin
-    channel: latest/edge
+    channel: reef/edge
 
   ceph-mon:
     charm: ch:ceph-mon
@@ -166,7 +166,7 @@ applications:
     options:
       source: *openstack-origin
       monitor-count: '3'
-    channel: latest/edge
+    channel: reef/edge
 
 relations:
 - - 'keystone:shared-db'

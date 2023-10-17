@@ -8,11 +8,10 @@ description: |
   .
   OpenStack Train or later is required.
 tags:
-  - openstack
+- openstack
 series:
-  - jammy
-  - lunar
-  - mantic
+- jammy
+- mantic
 subordinate: false
 requires:
   shared-db:
