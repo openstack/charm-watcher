@@ -6,13 +6,12 @@ description: |
   OpenStack Watcher provides a flexible and scalable resource
   optimization service for multi-tenant clouds.
   .
-  OpenStack Train or later is required.
+  OpenStack Yoga or later is required.
 tags:
   - openstack
 series:
   - jammy
-  - lunar
-  - mantic
+  - kinetic
 subordinate: false
 requires:
   shared-db:

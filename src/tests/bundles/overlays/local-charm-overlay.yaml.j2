@@ -7,6 +7,10 @@ applications:
     charm: ch:hacluster
     num_units: 0
     channel: latest/edge
+  nova-compute:
+    options:
+      cpu-mode: custom
+      cpu-model: SandyBridge
 relations:
 - - watcher
   - hacluster
