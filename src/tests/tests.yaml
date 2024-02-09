@@ -2,13 +2,9 @@ charm_name: watcher
 gate_bundles:
   - jammy-antelope
   - jammy-bobcat
-  - lunar-antelope
-  - mantic-bobcat
-
+  - jammy-caracal
 smoke_bundles:
-  - jammy-antelope
-  - jammy-bobcat
-
+  - jammy-caracal
 configure:
   - zaza.openstack.charm_tests.vault.setup.auto_initialize_no_validation
   - zaza.openstack.charm_tests.ceilometer.setup.basic_setup
@@ -22,8 +18,8 @@ tests:
   - zaza.openstack.charm_tests.watcher.tests.WatcherTests
 
 tests_options:
-  force_deploy: []
-
+  force_deploy:
+    - noble-caracal
 target_deploy_status:
   ovn-chassis:
     workload-status: waiting
@@ -40,3 +36,5 @@ target_deploy_status:
   ceilometer:
     workload-status: blocked
     workload-status-message-prefix: "Run the ceilometer-upgrade action on the leader to initialize ceilometer and gnocchi"
+dev_bundles:
+  - noble-caracal
