@@ -9,8 +9,6 @@ description: |
   OpenStack Train or later is required.
 tags:
   - openstack
-series:
-  - jammy
 subordinate: false
 requires:
   shared-db:

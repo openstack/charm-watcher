@@ -42,7 +42,7 @@ applications:
 
   keystone:
     charm: ch:keystone
-    channel: 2024.1/edge
+    channel: latest/edge
     num_units: 1
     options:
       openstack-origin: *openstack-origin
@@ -68,7 +68,7 @@ applications:
       openstack-origin: *openstack-origin
       network-manager: Neutron
       debug: true
-    channel: 2024.1/edge
+    channel: latest/edge
 
   neutron-api:
     charm: ch:neutron-api
@@ -78,21 +78,21 @@ applications:
       openstack-origin: *openstack-origin
       flat-network-providers: physnet1
       neutron-security-groups: true
-    channel: 2024.1/edge
+    channel: latest/edge
 
   glance:
     charm: ch:glance
     num_units: 1
     options:
       openstack-origin: *openstack-origin
-    channel: 2024.1/edge
+    channel: latest/edge
 
   placement:
     charm: ch:placement
     num_units: 1
     options:
       openstack-origin: *openstack-origin
-    channel: 2024.1/edge
+    channel: latest/edge
 
   nova-compute:
     charm: ch:nova-compute
@@ -106,7 +106,7 @@ applications:
       debug: true
       config-flags: "compute_monitors=cpu.virt_driver"
       libvirt-image-backend: "rbd"
-    channel: 2024.1/edge
+    channel: latest/edge
 
   vault:
     charm: ch:vault
@@ -126,11 +126,11 @@ applications:
 
   neutron-api-plugin-ovn:
     charm: ch:neutron-api-plugin-ovn
-    channel: 2024.1/edge
+    channel: latest/edge
 
   ceilometer:
     charm: ch:ceilometer
-    channel: 2024.1/edge
+    channel: latest/edge
     num_units: 1
     options:
       openstack-origin: *openstack-origin
@@ -140,11 +140,11 @@ applications:
     num_units: 1
     options:
       openstack-origin: *openstack-origin
-    channel: 2024.1/edge
+    channel: latest/edge
 
   ceilometer-agent:
     charm: ch:ceilometer-agent
-    channel: 2024.1/edge
+    channel: latest/edge
 
   memcached:
     charm: ch:memcached
@@ -158,7 +158,7 @@ applications:
       osd-devices: '20G'
     options:
       source: *openstack-origin
-    channel: reef/edge
+    channel: latest/edge
 
   ceph-mon:
     charm: ch:ceph-mon
@@ -166,7 +166,7 @@ applications:
     options:
       source: *openstack-origin
       monitor-count: '3'
-    channel: reef/edge
+    channel: latest/edge
 
 relations:
 - - 'keystone:shared-db'
