@@ -34,6 +34,9 @@ netaddr==0.10.1
     # via
     #   -c /home/alex/Projects/Canonical/git/github.com/openstack-charmers/release-tools/global/constraints-2024.1.txt
     #   charmhelpers
+netifaces==0.11.0
+    # via
+    #   charmhelpers
 pbr==6.0.0
     # via
     #   charmhelpers
