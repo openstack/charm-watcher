@@ -97,10 +97,20 @@ options:
       .
       Example: five_years:31556952,one_month:2592000,one_week:604800
   data-model-period:
-    default: 3600
+    default: 1800
     type: int
     description: |
-      The time interval (in seconds) between each synchronization of the model
+      The time interval (in seconds) between each synchronization of the model.
+      This charm does not support notification-based cluster model updates.
+      Instead, Watcher uses this value for the periodic polling to keep its
+      cluster model up to date. It is crucial not to create CONTINUOUS audits
+      with the interval lower than this value, as it would lead to incorrect
+      Watcher's decisions. Also, the ONESHOT audits should not be executed
+      more frequently than this value. The lower this value is, the more
+      frequently Watcher will poll OpenStack control plane for model changes.
+      Internally, Watcher also uses this value as the cluster model
+      synchronization timeout. When the debug logging is enabled, Watcher
+      periodically dumps the cluster model to the decision engine log file.
   datasources:
     default:
     type: string
