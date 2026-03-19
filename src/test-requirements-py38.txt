@@ -58,7 +58,7 @@ cffi==1.16.0
     # via
     #   cryptography
     #   pynacl
-charm-tools==3.0.7
+charm-tools @ git+https://github.com/juju/charm-tools.git
     # via -r src/test-requirements.in
 charset-normalizer==3.3.2
     # via requests
@@ -714,7 +714,6 @@ urllib3==1.26.18
     #   botocore
     #   kubernetes
     #   requests
-vergit==1.0.2
     # via charm-tools
 virtualenv==20.26.0
     # via charm-tools
