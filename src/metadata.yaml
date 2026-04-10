@@ -8,9 +8,10 @@ description: |
   .
   OpenStack Train or later is required.
 tags:
-  - openstack
+- openstack
 series:
-  - jammy
+- jammy
+- noble
 subordinate: false
 requires:
   shared-db:
