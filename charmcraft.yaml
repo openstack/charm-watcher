@@ -3,18 +3,22 @@ type: charm
 parts:
   charm:
     plugin: reactive
+    reactive-charm-build-arguments:
+      - --verbose
+      - --binary-wheels-from-source
+      - --use-lock-file-branches
     build-packages:
       - tox
       - git
       - python3-dev
+      - libffi-dev
+      - libssl-dev
     source: src/
     build-snaps:
       - charm/3.x/stable
     build-environment:
       - CHARM_INTERFACES_DIR: $CRAFT_PROJECT_DIR/interfaces/
       - CHARM_LAYERS_DIR: $CRAFT_PROJECT_DIR/layers/
-    reactive-charm-build-arguments:
-      - --use-lock-file-branches
 platforms:
   ubuntu@22.04:amd64:
   ubuntu@22.04:arm64:
