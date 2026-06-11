@@ -48,7 +48,7 @@ applications:
       openstack-origin: *openstack-origin
 
   watcher:
-    charm: ../../../watcher.charm
+    charm: ../../../watcher_ubuntu@22.04-amd64.charm
     num_units: 1
     options:
       openstack-origin: *openstack-origin
