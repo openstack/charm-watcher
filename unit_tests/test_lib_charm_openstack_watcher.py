@@ -168,6 +168,9 @@ class TestWatcherCharmConfigProperties(Helper):
 
 
 class TestWatcherCharm(Helper):
+    def test_packages_include_apache2(self):
+        self.assertIn('apache2', watcher.WatcherCharm.packages)
+
     def _patch_config_and_charm(self, config):
         self.patch_object(charmhelpers.core.hookenv, 'config')
 
